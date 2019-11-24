@@ -19,6 +19,14 @@ class ToDoList extends React.Component {
         })
       }
 
+    handleClick(submitEvent) {
+        submitEvent.preventDefault();
+        const completedTasks = [this.state.tasks]
+        completedTasks.push({
+            task: this.state.task,
+        })
+    }
+
     // handleChange(changeEvent) {
     //     console.log(changeEvent)
 
@@ -55,9 +63,12 @@ class ToDoList extends React.Component {
                 <h4>Tasks</h4>              
                     <div>
                     <ul>
-                        {this.state.tasks.map((item) => <li>{item.task}</li>)}
+                        {this.state.tasks.map((item) => <button className="buttonStyle" onSubmit={this.handleClick}>{item.task}</button>)}
                     </ul>
                     </div>
+                <br />
+                <br />
+                <h4>Completed Tasks</h4>
               </div>
         );
     }
